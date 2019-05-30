@@ -4,5 +4,7 @@ class CreateToys < ActiveRecord::Migration[5.1]
       t.string :name, null: false
       t.references :toyable, polymorphic: true, index: true
     end
+    add_index :toys, :name, unique: true
+    add_index :toys, [:toyable_id]
   end
 end
